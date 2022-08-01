@@ -39,6 +39,6 @@ jobs:
           REPOSITORY: test
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          docker build -t public.ecr.aws/u2p9a2f0/test:latest .
+          docker push public.ecr.aws/u2p9a2f0/test:latest
 
