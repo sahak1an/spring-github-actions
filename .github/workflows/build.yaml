@@ -23,14 +23,7 @@ jobs:
         run: mvn --no-transfer-progress install -DskipTests=true
 
       - name: run tests
-        run: mvn test
-
-      - name: Bump release version
-        id: bump_version
-        uses: christian-draeger/increment-semantic-version@1.0.2
-        with:
-          current-version: '2.11.7'
-          version-fragment: 'feature'
+        run: mvn --no-transfer-progress test
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
