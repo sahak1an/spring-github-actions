@@ -36,7 +36,7 @@ jobs:
       - name: Build, tag, and push docker image to Amazon ECR
         env:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          REPOSITORY: test
+          REPOSITORY: springapp
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker build -t public.ecr.aws/u2p9a2f0/test:latest .
