@@ -13,5 +13,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-      - name: build maven
-        run: mvn install
+      - name: maven build without test
+        run: mvn install -DskipTests=true
+      - name: run tests
+        run: mvn test
