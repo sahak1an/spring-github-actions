@@ -21,10 +21,9 @@ jobs:
           java-version: '17'
       - name: maven build without test
         run: mvn install -DskipTests=true
+
       - name: run tests
         run: mvn test
-      - name: docker build app image
-        run: docker build -t public.ecr.aws/u2p9a2f0/test:latest .
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -42,7 +41,7 @@ jobs:
           REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           REPOSITORY: test
           IMAGE_TAG: ${{ github.sha }}
-          run: |
-            docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
-            docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
+        run: |
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
