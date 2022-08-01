@@ -26,7 +26,7 @@ jobs:
       - name: run tests
         run: mvn test
       - name: ls
-        run: ll
+        run: ls -a
 
 #      - name: Configure AWS credentials
 #        uses: aws-actions/configure-aws-credentials@v1
