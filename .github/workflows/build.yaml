@@ -20,8 +20,4 @@ jobs:
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
-      - name: Build image
-        env:
-          REGISTRY: public.ecr.aws/u2p9a2f0
-          REPOSITORY: test
-          IMAGE_TAG: ${{ github.sha }}
+
