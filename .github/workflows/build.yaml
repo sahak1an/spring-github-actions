@@ -33,6 +33,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
+      - name: Generate build number
+        uses: einaregilsson/build-number@v3
+        with:
+            token: ${{secrets.github_token}}
+
+      - name: Print build number
+        run: echo "Build number is $BUILD_NUMBER"
+
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
@@ -45,6 +53,3 @@ jobs:
         run: |
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
-
-      - name: Pull image
-        run: docker pull 169695054638.dkr.ecr.us-east-1.amazonaws.com/springapp:1.0.1
