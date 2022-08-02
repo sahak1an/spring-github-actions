@@ -32,6 +32,6 @@ class SpringGithubActionsApplicationTests {
             .uri("/hello")
             .exchange()
             .expectBody()
-            .jsonPath("$.message").doesNotExist();
+            .jsonPath("$.message1").doesNotExist();
     }
 }
