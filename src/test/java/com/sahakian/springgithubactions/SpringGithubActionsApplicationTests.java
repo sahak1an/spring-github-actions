@@ -23,4 +23,15 @@ class SpringGithubActionsApplicationTests {
             .expectBody()
             .jsonPath("$.message").isEqualTo("Hello");
     }
+
+
+    @Test
+    void failRequest() {
+        webTestClient
+            .post()
+            .uri("/hello")
+            .exchange()
+            .expectBody()
+            .jsonPath("$.message").doesNotExist();
+    }
 }
