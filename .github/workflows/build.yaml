@@ -6,10 +6,9 @@ on:
       - "master"
 
 jobs:
+
   run-tests:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: sahak1an/spring-github-actions/.github/workflows/run-test.yaml@master
+       uses: sahak1an/spring-github-actions/.github/workflows/run-test.yaml@master
 
   build-gradle:
     runs-on: ubuntu-latest
