@@ -1,0 +1,22 @@
+name: "build spring app"
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+
+      - name: install jdk 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: run tests
+        run: mvn --no-transfer-progress test
