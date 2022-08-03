@@ -13,7 +13,7 @@ jobs:
       - name: show content
         run: ls -a
 
-      - uses: .github/workflows/run-test.yaml@main
+      - uses: ./.github/workflows/run-test.yaml@main
 
   build-gradle:
     runs-on: ubuntu-latest
