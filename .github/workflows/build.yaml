@@ -9,9 +9,6 @@ jobs:
   run-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: show content
-        run: ls -a
       - uses: sahak1an/spring-github-actions/.github/workflows/run-test.yaml@master
 
   build-gradle:
