@@ -1,9 +1,7 @@
 name: "build spring app"
 
 on:
-  push:
-    branches:
-      - "master"
+  workflow_call:
 
 jobs:
   run-tests:
