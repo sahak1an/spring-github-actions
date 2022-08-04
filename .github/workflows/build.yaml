@@ -7,16 +7,16 @@ on:
 
 jobs:
   run-tests:
-       uses: sahak1an/spring-github-actions/.github/workflows/run-test.yaml@master
+       uses: ./.github/workflows/run-test.yaml@master
 
   build-gradle:
-    uses: sahak1an/spring-github-actions/.github/workflows/gradle-build.yaml@master
+    uses: ./.github/workflows/gradle-build.yaml@master
 
   push-aws:
     needs:
       - run-tests
       - build-gradle
-    uses: sahak1an/spring-github-actions/.github/workflows/push-aws.yaml@master
+    uses: ./.github/workflows/push-aws.yaml@master
     secrets:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
