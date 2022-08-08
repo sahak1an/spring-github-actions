@@ -17,21 +17,19 @@ class SpringGithubActionsApplicationTests {
     @Test
     void successRequest() {
         webTestClient
-            .get()
-            .uri("/hello")
+                .get()
+                .uri("/")
+                .header("name", "John")
             .exchange()
             .expectBody()
-            .jsonPath("$.message").isEqualTo("Hello");
-    }
+            .jsonPath("$").isEqualTo("John");
 
-
-    @Test
-    void failRequest() {
         webTestClient
-            .post()
-            .uri("/hello")
-            .exchange()
-            .expectBody()
-            .jsonPath("$.message1").doesNotExist();
+                .get()
+                .uri("/")
+                .header("name", "John")
+                .exchange()
+                .expectBody()
+                .jsonPath("$").isEqualTo("Many request");
     }
 }
