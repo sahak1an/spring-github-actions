@@ -12,11 +12,11 @@ jobs:
   build-gradle:
     uses: ./.github/workflows/gradle-build.yaml
 
-  push-aws:
-    needs:
-      - run-tests
-      - build-gradle
-    uses: ./.github/workflows/push-aws.yaml
-    secrets:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  qodana:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: 'Qodana Scan'
+        uses: JetBrains/qodana-action@v2022.2.2
