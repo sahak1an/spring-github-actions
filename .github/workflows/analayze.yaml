@@ -22,6 +22,8 @@ jobs:
         with:
           egress-policy: audit
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Set up JDK ${{ env.JAVA_VERSION }}
         uses: Wandalen/wretry.action@v1.0.36
         timeout-minutes: 5
@@ -36,16 +38,4 @@ jobs:
       - name: Build
         run: ./mvnw package
       - name: Qodana - Code Inspection
-        uses: JetBrains/qodana-action@main
-      - name: Upload SARIF file for GitHub Advanced Security Dashboard
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: ${{ runner.temp }}/qodana/results/qodana.sarif.json
-      - name: View Instructions
-        run: |
-          echo "Download and extract the report artifact"
-          echo "Start a http server"
-          echo "... python2 -m SimpleHTTPServer"
-          echo "... python3 -m http.server"
-          echo "The report is available at http://localhost:8000"
-          echo "For more details see https://www.jetbrains.com/help/qodana"
+        uses: JetBrains/qodana-action@v2022.2.2
