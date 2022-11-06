@@ -1,6 +1,10 @@
 
 name: Qodana
-on: [ push, pull_request ]
+
+on:
+  push:
+    branches:
+      - "master"
 
 env:
   JAVA_VERSION: 17
