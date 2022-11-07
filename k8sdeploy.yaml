@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: Spring app
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+    template:
+      metadata:
+        labels:
+          app: app
+      spec:
+        containers:
+          - name: app
+            image: ../spring-github-actions
+            ports:
+              - containerPort: 8080
+            env:
+              - name: SERVER_PORT
+                value: 8080
